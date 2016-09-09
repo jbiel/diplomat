@@ -53,6 +53,7 @@ module Diplomat
       url << use_named_parameter('dc', options[:dc]) if options and options[:dc]
       url << use_named_parameter('near', options[:near]) if options and options[:near]
       url << use_named_parameter('passing', true) if options and options[:passing]
+      url << use_named_parameter('tag', options[:tag]) if options and options[:tag]
       url << options[:state] if options and options[:state]
 
       # If the request fails, it's probably due to a bad path
