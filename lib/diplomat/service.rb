@@ -22,6 +22,7 @@ module Diplomat
       url << use_named_parameter('index', options[:index]) if options and options[:index]
       url << use_named_parameter('dc', options[:dc]) if options and options[:dc]
       url << use_named_parameter('tag', options[:tag]) if options and options[:tag]
+      url << use_named_parameter('near', options[:near]) if options and options[:near]
 
       # If the request fails, it's probably due to a bad path
       # so return a PathNotFound error.

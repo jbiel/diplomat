@@ -17,7 +17,14 @@ module Diplomat
     # @param value [String] the value of the parameter
     # @return [Array] the resultant parameter string inside an array.
     def use_named_parameter(name, value)
-      if value then ["#{name}=#{value}"] else [] end
+      if value and (value.is_a? String or value.is_a? Integer)
+        ["#{name}=#{value}"]
+      elsif value
+        # value is a boolean and true, just pass the name
+        [name]
+      else
+        []
+      end
     end
 
     # Assemble a url from an array of parts.

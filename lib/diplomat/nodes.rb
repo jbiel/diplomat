@@ -16,6 +16,7 @@ module Diplomat
     def get_all options=nil
       url = ["/v1/catalog/nodes"]
       url << use_named_parameter('dc', options[:dc]) if options and options[:dc]
+      url << use_named_parameter('near', options[:near]) if options and options[:near]
       begin
         ret = @conn.get concat_url url
       rescue Faraday::ClientError

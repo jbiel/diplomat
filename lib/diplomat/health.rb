@@ -31,6 +31,7 @@ module Diplomat
     def checks s, options=nil
       url = ["/v1/health/checks/#{s}"]
       url << use_named_parameter('dc', options[:dc]) if options and options[:dc]
+      url << use_named_parameter('near', options[:near]) if options and options[:near]
       
       # If the request fails, it's probably due to a bad path
       # so return a PathNotFound error.
@@ -50,6 +51,8 @@ module Diplomat
     def service s, options=nil
       url = ["/v1/health/service/#{s}"]
       url << use_named_parameter('dc', options[:dc]) if options and options[:dc]
+      url << use_named_parameter('near', options[:near]) if options and options[:near]
+      url << use_named_parameter('passing', true) if options and options[:passing]
       url << options[:state] if options and options[:state]
 
       # If the request fails, it's probably due to a bad path
@@ -69,7 +72,8 @@ module Diplomat
     def state s, options=nil
        url = ["/v1/health/state/#{s}"]
        url << use_named_parameter('dc', options[:dc]) if options and options[:dc]
-       
+       url << use_named_parameter('near', options[:near]) if options and options[:near]
+
        # If the request fails, it's probably due to a bad path
        # so return a PathNotFound error.
        begin
